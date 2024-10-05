@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { BlogPost as IBlogPost } from '../interfaces/blog-post.interface';
+import { BlogContent } from '../interfaces/blog-content.type';
 
 @Entity('blogposts')
-export class BlogPost {
+export class BlogPostEntity implements IBlogPost {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -30,7 +32,7 @@ export class BlogPost {
   image: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  content: string;
+  content: BlogContent;
 
   @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;

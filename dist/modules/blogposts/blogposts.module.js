@@ -17,7 +17,7 @@ let BlogPostsModule = class BlogPostsModule {
 exports.BlogPostsModule = BlogPostsModule;
 exports.BlogPostsModule = BlogPostsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([blogpost_entity_1.BlogPost])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([blogpost_entity_1.BlogPostEntity])],
         controllers: [blogposts_controller_1.BlogPostsController],
         providers: [blogposts_service_1.BlogPostsService],
     })

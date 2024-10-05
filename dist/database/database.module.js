@@ -26,7 +26,7 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                     username: configService.get('DB_USER'),
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
-                    entities: [blogpost_entity_1.BlogPost],
+                    entities: [blogpost_entity_1.BlogPostEntity],
                 }),
                 inject: [config_1.ConfigService],
             }),

@@ -9,52 +9,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlogPost = void 0;
+exports.BlogPostEntity = void 0;
 const typeorm_1 = require("typeorm");
-let BlogPost = class BlogPost {
+let BlogPostEntity = class BlogPostEntity {
 };
-exports.BlogPost = BlogPost;
+exports.BlogPostEntity = BlogPostEntity;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], BlogPost.prototype, "id", void 0);
+], BlogPostEntity.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int', nullable: true }),
     __metadata("design:type", Number)
-], BlogPost.prototype, "time_to_read", void 0);
+], BlogPostEntity.prototype, "time_to_read", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 255, nullable: true }),
     __metadata("design:type", String)
-], BlogPost.prototype, "title", void 0);
+], BlogPostEntity.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 500, nullable: true }),
     __metadata("design:type", String)
-], BlogPost.prototype, "description", void 0);
+], BlogPostEntity.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: true }),
     __metadata("design:type", String)
-], BlogPost.prototype, "author", void 0);
+], BlogPostEntity.prototype, "author", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 100, nullable: true }),
     __metadata("design:type", String)
-], BlogPost.prototype, "author_profession", void 0);
+], BlogPostEntity.prototype, "author_profession", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 255, nullable: true }),
     __metadata("design:type", String)
-], BlogPost.prototype, "image", void 0);
+], BlogPostEntity.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'jsonb', nullable: true }),
-    __metadata("design:type", String)
-], BlogPost.prototype, "content", void 0);
+    __metadata("design:type", Object)
+], BlogPostEntity.prototype, "content", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
-], BlogPost.prototype, "created_at", void 0);
+], BlogPostEntity.prototype, "created_at", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
-], BlogPost.prototype, "updated_at", void 0);
-exports.BlogPost = BlogPost = __decorate([
+], BlogPostEntity.prototype, "updated_at", void 0);
+exports.BlogPostEntity = BlogPostEntity = __decorate([
     (0, typeorm_1.Entity)('blogposts')
-], BlogPost);
+], BlogPostEntity);
 //# sourceMappingURL=blogpost.entity.js.map

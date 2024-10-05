@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { BlogPost } from 'src/modules/blogposts/entities/blogpost.entity';
+import { BlogPostEntity } from 'src/modules/blogposts/entities/blogpost.entity';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { BlogPost } from 'src/modules/blogposts/entities/blogpost.entity';
         username: configService.get('DB_USER'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [BlogPost],
+        entities: [BlogPostEntity],
       }),
       inject: [ConfigService],
     }),

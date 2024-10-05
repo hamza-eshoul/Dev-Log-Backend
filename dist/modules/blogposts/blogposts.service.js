@@ -14,9 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogPostsService = void 0;
 const common_1 = require("@nestjs/common");
-const blogpost_entity_1 = require("./entities/blogpost.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
+const blogpost_entity_1 = require("./entities/blogpost.entity");
 let BlogPostsService = class BlogPostsService {
     constructor(blogPostRepository) {
         this.blogPostRepository = blogPostRepository;
@@ -24,11 +24,35 @@ let BlogPostsService = class BlogPostsService {
     async getAllBlogPosts() {
         return await this.blogPostRepository.find();
     }
+    async getBlogPostById(id) {
+        const post = await this.blogPostRepository.findOne({
+            where: { id },
+        });
+        if (!post) {
+            throw new common_1.NotFoundException(`Blog post with ID ${id} not found`);
+        }
+        return post;
+    }
+    async createBlogPost(createBlogPostDto) {
+        try {
+            const newBlogPost = this.blogPostRepository.create(createBlogPostDto);
+            return await this.blogPostRepository.save(newBlogPost);
+        }
+        catch (error) {
+            throw new common_1.InternalServerErrorException('Failed to create blog post');
+        }
+    }
+    async deleteBlogPost(id) {
+        const result = await this.blogPostRepository.delete(id);
+        if (result.affected === 0) {
+            throw new common_1.NotFoundException(`Blog post with ID ${id} not found`);
+        }
+    }
 };
 exports.BlogPostsService = BlogPostsService;
 exports.BlogPostsService = BlogPostsService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(blogpost_entity_1.BlogPost)),
+    __param(0, (0, typeorm_1.InjectRepository)(blogpost_entity_1.BlogPostEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], BlogPostsService);
 //# sourceMappingURL=blogposts.service.js.map
