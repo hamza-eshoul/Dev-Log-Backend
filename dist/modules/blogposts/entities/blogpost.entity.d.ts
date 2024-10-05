@@ -6,7 +6,7 @@ export declare class BlogPost {
     author: string;
     author_profession: string;
     image: string;
-    content: any;
+    content: string;
     created_at: Date;
     updated_at: Date;
 }

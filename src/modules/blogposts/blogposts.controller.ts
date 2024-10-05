@@ -6,6 +6,6 @@ export class BlogPostsController {
   constructor(private blogPostsService: BlogPostsService) {}
   @Get()
   async getAllPosts() {
-    return this.blogPostsService.findAll();
+    return this.blogPostsService.getAllBlogPosts();
   }
 }

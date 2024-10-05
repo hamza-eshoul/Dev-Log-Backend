@@ -10,6 +10,7 @@ exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const config_1 = require("@nestjs/config");
+const blogpost_entity_1 = require("../modules/blogposts/entities/blogpost.entity");
 let DatabaseModule = class DatabaseModule {
 };
 exports.DatabaseModule = DatabaseModule;
@@ -25,6 +26,7 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                     username: configService.get('DB_USER'),
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
+                    entities: [blogpost_entity_1.BlogPost],
                 }),
                 inject: [config_1.ConfigService],
             }),

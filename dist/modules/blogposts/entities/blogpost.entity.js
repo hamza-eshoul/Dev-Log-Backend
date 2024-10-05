@@ -44,14 +44,14 @@ __decorate([
 ], BlogPost.prototype, "image", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'jsonb', nullable: true }),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], BlogPost.prototype, "content", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
 ], BlogPost.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.UpdateDateColumn)(),
+    (0, typeorm_1.UpdateDateColumn)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
 ], BlogPost.prototype, "updated_at", void 0);
 exports.BlogPost = BlogPost = __decorate([

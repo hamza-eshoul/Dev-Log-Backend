@@ -17,7 +17,7 @@ let BlogPostsController = class BlogPostsController {
         this.blogPostsService = blogPostsService;
     }
     async getAllPosts() {
-        return this.blogPostsService.findAll();
+        return this.blogPostsService.getAllBlogPosts();
     }
 };
 exports.BlogPostsController = BlogPostsController;
