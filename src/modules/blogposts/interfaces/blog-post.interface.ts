@@ -10,5 +10,4 @@ export interface BlogPost {
   image: string;
   content: BlogContent;
   created_at: Date;
-  updated_at: Date;
 }
