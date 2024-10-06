@@ -11,12 +11,31 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const blogposts_module_1 = require("./modules/blogposts/blogposts.module");
 const database_module_1 = require("./database/database.module");
+const core_1 = require("@nestjs/core");
+const api_key_auth_guard_1 = require("./guards/api-key-auth.guard");
+const throttler_1 = require("@nestjs/throttler");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), database_module_1.DatabaseModule, blogposts_module_1.BlogPostsModule],
+        imports: [
+            config_1.ConfigModule.forRoot(),
+            throttler_1.ThrottlerModule.forRoot([
+                {
+                    ttl: 60 * 15,
+                    limit: 100,
+                },
+            ]),
+            database_module_1.DatabaseModule,
+            blogposts_module_1.BlogPostsModule,
+        ],
+        providers: [
+            {
+                provide: core_1.APP_GUARD,
+                useClass: api_key_auth_guard_1.ApiKeyAuthGuard,
+            },
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
