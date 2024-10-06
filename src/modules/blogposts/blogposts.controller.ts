@@ -2,7 +2,6 @@ import {
   Controller,
   Param,
   Body,
-  ParseIntPipe,
   HttpCode,
   Get,
   Post,
@@ -22,9 +21,7 @@ export class BlogPostsController {
   }
 
   @Get(':id')
-  async getBlogPostById(
-    @Param('id', ParseIntPipe) id: number,
-  ): Promise<BlogPost> {
+  async getBlogPostById(@Param('id') id: number): Promise<BlogPost> {
     return this.blogPostsService.getBlogPostById(id);
   }
 
@@ -37,9 +34,7 @@ export class BlogPostsController {
 
   @Delete(':id')
   @HttpCode(200)
-  async deleteBlogPost(
-    @Param('id', ParseIntPipe) id: number,
-  ): Promise<{ message: string }> {
+  async deleteBlogPost(@Param('id') id: number): Promise<{ message: string }> {
     await this.blogPostsService.deleteBlogPost(id);
     return { message: `Blog post with ID ${id} has been successfully deleted` };
   }
