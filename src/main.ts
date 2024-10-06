@@ -8,6 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
+  const port = configService.get('PORT') || 3000;
+
   app.use(helmet());
   app.enableCors({
     origin: configService.get('FRONTEND_URL') || 'http://localhost:5173',
@@ -15,6 +17,6 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(3000);
+  await app.listen(port, '0.0.0.0');
 }
 bootstrap();
